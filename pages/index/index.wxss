@@ -1,1 +1,41 @@
 /**index.wxss**/
+.tab-h { /*设置滑动选项卡*/
+  height: 80rpx; /*选项卡区高度*/
+  width: 100%; /*选项卡区所占屏幕宽度*/
+  box-sizing: border-box; /*盒子宽度指定*/
+  overflow: hidden;
+  line-height: 80rpx;
+  background: #F7F7F7;/*#4675F9*/
+  font-size: 30rpx;
+  white-space: nowrap; /*超出容器宽度不换行*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  margin: 0 32rpx; /*设置每个选项卡宽度*/
+  display: inline-block; /*共享一行*/
+}
+
+.tab-item.active { /*选项卡选中后字体效果*/
+  color: #4675F9;/*#F7F7F7*/
+  position: relative;
+}
+
+.tab-item.active::after { /*选项卡选中后下划横块*/
+  content: " ";
+  display: block;
+  height: 8rpx;
+  width: 52rpx;
+  background: #4675F9;
+  position: absolute;
+  bottom: 0;
+  left: 5rpx;
+  border-radius: 16rpx;
+}
+
+.tab-content {
+  margin-top: 80rpx;
+}
