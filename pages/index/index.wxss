@@ -39,3 +39,34 @@
 .tab-content {
   margin-top: 80rpx;
 }
+
+.news-item {
+  display: flex;
+  align-items: center;
+  height: 200rpx;
+  margin: 0 20rpx 0 20rpx;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.text-wrapper {
+  display: block;
+  width: 65%;
+  margin: 10rpx 0 10rpx 0; 
+}
+
+.news-title {
+  margin: 10rpx 0 10rpx 0;
+}
+
+.author-and-time {
+  justify-content: space-between;
+  display: flex;
+  font-size: 25rpx;
+  opacity: 0.5;
+}
+
+.news-icon {
+  width: 30%;
+  height: 70%;
+  padding-left: 2%;
+}
