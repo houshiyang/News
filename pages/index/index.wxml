@@ -16,7 +16,7 @@
 		<swiper-item wx:for="{{[0,1,2,3,4,5,6,7,8,9]}}">
 			<scroll-view class="posts-list" style="height:100%" scroll-y="true">
 				<view class="news-item" wx:for='{{newsList}}'>
-					<view class="text-wrapper">
+					<view class="text-wrapper" bindtap="navigateToDetail" data-title="{{item.title}}" data-date="{{item.date}}" data-category="{{item.category}}" data-authorName="{{item.author_name}}" data-url="{{item.url}}" data-thumbnail_pic_s="{{item.thumbnail_pic_s}}" data-thumbnailPicS02="{{item.thumbnail_pic_s02}}" data-thumbnailPicS03="{{item.thumbnail_pic_s03}}">
 						<view class="news-title">{{item.title}}</view>
 						<view class="author-and-time">
 							<view>{{item.author_name}}</view>

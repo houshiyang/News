@@ -11,10 +11,45 @@ Page({
     },
     // 滚动切换标签样式
     switchTab: function (e) { //对应bindchange组件，用console.log打印e看结果结构
+        console.log('switchTab', e)
         this.setData({
             currentTab: e.detail.current //取到当前页
+
         });
+        switch(this.data.currentTab) {
+            case 0:
+                this.setData({id: 'top'})
+                break;
+            case 1:
+                this.setData({id: 'shehui'})
+                break;
+            case 2:
+                this.setData({id: 'guonei'})
+                break;
+            case 3:
+                this.setData({id: 'guoji'})
+                break;
+            case 4:
+                this.setData({id: 'yule'})
+                break;
+            case 5:
+                this.setData({id: 'tiyu'})
+                break;
+            case 6:
+                this.setData({id: 'junshi'})
+                break;
+            case 7:
+                this.setData({id: 'keji'})
+                break;
+            case 8:
+                this.setData({id: 'caijing'})
+                break;
+            case 9:
+                this.setData({id: 'shishang'})
+                break;
+        };
         this.checkCor();
+        this.loadNews(this.data.id)
     },
     // 点击标题切换当前页时改变样式
     switchNav: function (e) { //对应bindtap组件
@@ -29,6 +64,7 @@ Page({
                 currentTab: cur //切换到目标页面
             })
         }
+        console.log('id', this.data.id)
         this.loadNews(this.data.id)
     },
     //判断当前横向滚动超过一屏时，设置tab标题滚动条。
@@ -70,4 +106,10 @@ Page({
             }
         })
     },
+    navigateToDetail: function (event) {
+        console.log('event', event)
+        wx.navigateTo({
+          url: '../detail/detail'
+        })
+    }
 })
