@@ -9,12 +9,33 @@ Page({
         newsList: [],
         newsType: ''
     },
+
+    onLoad: function () {
+        let that = this;
+        //  高度自适应
+        wx.getSystemInfo({ //获取系统信息
+            success: function (res) {
+                let clientHeight = res.windowHeight,
+                    clientWidth = res.windowWidth,
+                    rpxR = 750 / clientWidth;
+                let calc = clientHeight * rpxR - 180;
+                that.setData({
+                    winHeight: calc
+                });
+            }
+        })
+        this.loadNews(this.data.id)
+    },
+
+    onPullDownRefresh: function () {
+        this.loadNews(this.data.id)
+    },
+
     // 滚动切换标签样式
     switchTab: function (e) { //对应bindchange组件，用console.log打印e看结果结构
         console.log('switchTab', e)
         this.setData({
             currentTab: e.detail.current //取到当前页
-
         });
         switch(this.data.currentTab) {
             case 0:
@@ -51,6 +72,7 @@ Page({
         this.checkCor();
         this.loadNews(this.data.id)
     },
+
     // 点击标题切换当前页时改变样式
     switchNav: function (e) { //对应bindtap组件
         let cur = e.target.dataset.current; //取到点击的目标值
@@ -67,6 +89,7 @@ Page({
         console.log('id', this.data.id)
         this.loadNews(this.data.id)
     },
+
     //判断当前横向滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
         if (this.data.currentTab > 4) {
@@ -79,22 +102,7 @@ Page({
             })
         }
     },
-    onLoad: function () {
-        let that = this;
-        //  高度自适应
-        wx.getSystemInfo({ //获取系统信息
-            success: function (res) {
-                let clientHeight = res.windowHeight,
-                    clientWidth = res.windowWidth,
-                    rpxR = 750 / clientWidth;
-                let calc = clientHeight * rpxR - 180;
-                that.setData({
-                    winHeight: calc
-                });
-            }
-        })
-        this.loadNews(this.data.id)
-    },
+    
     //footerTap:app.footerTap
     loadNews: function (id = 'top') {
         wx.request({
@@ -106,10 +114,19 @@ Page({
             }
         })
     },
+
     navigateToDetail: function (event) {
         console.log('event', event)
+        let title = event.currentTarget.dataset.title
+        let date = event.currentTarget.dataset.date
+        let category = event.currentTarget.dataset.category
+        let authorName = event.currentTarget.dataset.authorName
+        let url = event.currentTarget.dataset.url
+        let thumbnail_pic_s = event.currentTarget.dataset.thumbnail_pic_s
+        let thumbnailPicS02 = event.currentTarget.dataset.thumbnailPicS02
+        let thumbnailPicS03 = event.currentTarget.dataset.thumbnailPicS03
         wx.navigateTo({
-          url: '../detail/detail'
+          url: '../detail/detail?title=' + title + '&date=' + date + '&category=' + category + '&authorName=' + authorName + '&url=' + url + '&thumbnail_pic_s=' + thumbnail_pic_s + '&thumbnailPicS02=' + thumbnailPicS02 + '&thumbnailPicS03=' + thumbnailPicS03,
         })
     }
 })

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view>
 	<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-		<view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="switchNav" id="top">头条</view>
+		<view class="tab-item {{currentTab == 0 ? 'active' : ''}}" data-current="0" bindtap="switchNav" id="top">头条</view>
 		<view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="switchNav" id="shehui">社会</view>
 		<view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="switchNav" id="guonei">国内</view>
 		<view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="switchNav" id="guoji">国际</view>

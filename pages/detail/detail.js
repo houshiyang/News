@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    title: '',
+    date: '',
+    category: '',
+    autherName: '',
+    url: '',
+    thumbnail_pic_s: '',
+    thumbnailPicS02: '',
+    thumbnailPicS03: ''
   },
 
   /**
@@ -13,8 +20,11 @@ Page({
    */
   onLoad: function (options) {
     console.log('options', options)
-    
-    },
+    this.setData({
+      url: options.url,
+    })
+    this.loadDetailPage(this.data.url)
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -62,6 +72,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  loadDetailPage: function (detail_url) {
+    wx.request({
+      url: detail_url,
+      success: res => {
+        console.log('detail', res)
+        this.setData({
+
+        })
+      }
+    })
 
   }
 })
