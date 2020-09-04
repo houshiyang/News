@@ -1,2 +1,35 @@
 <!--index.wxml-->
-<view>Hello world!</view>
+<view>
+	<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+		<view class="tab-item {{currentTab == 0 ? 'active' : ''}}" data-current="0" bindtap="switchNav" id="top">头条</view>
+		<view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="switchNav" id="shehui">社会</view>
+		<view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="switchNav" id="guonei">国内</view>
+		<view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="switchNav" id="guoji">国际</view>
+		<view class="tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="switchNav" id="yule">娱乐</view>
+		<view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="switchNav" id="tiyu">体育</view>
+		<view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="switchNav" id="junshi">军事</view>
+		<view class="tab-item {{currentTab==7?'active':''}}" data-current="7" bindtap="switchNav" id="keji">科技</view>
+		<view class="tab-item {{currentTab==8?'active':''}}" data-current="8" bindtap="switchNav" id="caijing">财经</view>
+		<view class="tab-item {{currentTab==9?'active':''}}" data-current="9" bindtap="switchNav" id="shishang">时尚</view>
+	</scroll-view>
+	<swiper class="tab-content" current="{{currentTab}}" duration="900" bindchange="switchTab" style="height:{{winHeight}}rpx">
+		<swiper-item wx:for="{{[0,1,2,3,4,5,6,7,8,9]}}">
+			<scroll-view class="posts-list" style="height:100%" scroll-y="true">
+				<view class="news-item" wx:for='{{newsList}}'>
+					<view class="text-wrapper" bindtap="navigateToDetail" data-title="{{item.title}}" data-date="{{item.date}}" data-category="{{item.category}}" data-authorName="{{item.author_name}}" data-url="{{item.url}}" data-thumbnail_pic_s="{{item.thumbnail_pic_s}}" data-thumbnailPicS02="{{item.thumbnail_pic_s02}}" data-thumbnailPicS03="{{item.thumbnail_pic_s03}}">
+						<view class="news-title">{{item.title}}</view>
+						<view class="author-and-time">
+							<view>{{item.author_name}}</view>
+							<view>{{item.date}}</view>
+						</view>
+					</view>
+					<image class="news-icon" src="{{item.thumbnail_pic_s}}"></image>
+				</view>
+			</scroll-view>
+
+
+
+
+		</swiper-item>
+	</swiper>
+</view>
